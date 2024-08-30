@@ -42,7 +42,8 @@
     </style>
     <script>
         // callAPI function that takes the base and exponent numbers as parameters
-        var callAPI = (base,exponent)=>{
+        function callAPI (base,exponent) {
+            
             // instantiate a headers object
             var myHeaders = new Headers();
             // add content type header to object
@@ -57,10 +58,14 @@
                 redirect: 'follow'
             };
             // make API call with parameters and use promises to get response
-            fetch("YOUR API GATEWAY ENDPOINT", requestOptions)
+             
+            fetch("https://72r4w6ijbc.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
             .then(response => response.text())
+             
             .then(result => alert(JSON.parse(result).body))
+            
             .catch(error => console.log('error', error));
+            
         }
     </script>
 </head>
@@ -73,6 +78,7 @@
         <input type="text" id="exponent">
         <!-- set button onClick method to call function we defined passing input values as parameters -->
         <button type="button" onclick="callAPI(document.getElementById('base').value,document.getElementById('exponent').value)">CALCULATE</button>
+ 
     </form>
 </body>
 </html>
